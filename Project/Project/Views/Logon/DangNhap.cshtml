@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+}
+
+<h2>Đăng Nhập</h2>
+@using (Html.BeginForm())
+{
+    <span>Tài Khoản: </span>
+    <br/>
+    @Html.TextBox("txtTaiKhoan");
+    <br/>
+    <span>Mật Khẩu: </span>
+    <br/>
+    <input name="txtMatKhau" type="text"/>
+    <br/>
+    <input type="submit" id="btnSubmit" name="btnSubmit" />
+}
+
