@@ -3,17 +3,15 @@
     ViewBag.Title = "DangNhap";
 }
 
-<h2>Đăng Nhập</h2>
+<h2>Đăng nhập</h2>
+<h1>@ViewBag.ThongBao</h1>
 @using (Html.BeginForm())
-{
-    <span>Tài Khoản: </span>
+{  
+     <span>Username:</span><br />
+    <input name="txtTaiKhoan" type="text" />
     <br/>
-    @Html.TextBox("txtTaiKhoan");
-    <br/>
-    <span>Mật Khẩu: </span>
-    <br/>
-    <input name="txtMatKhau" type="text"/>
-    <br/>
-    <input type="submit" id="btnSubmit" name="btnSubmit" />
+    <span>Password:</span><br />
+    <input name="txtMatKhau" type="password"/>
+    <br />
+    <input type="submit" id="btmSubmit" name="btmSubmit" />
 }
-
