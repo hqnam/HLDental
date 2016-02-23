@@ -44,3 +44,6 @@ D:\HLDental\Project\Project\bin\System.Web.Mvc.xml
 D:\HLDental\Project\Project\obj\Debug\Project.csprojResolveAssemblyReference.cache
 D:\HLDental\Project\Project\obj\Debug\Project.dll
 D:\HLDental\Project\Project\obj\Debug\Project.pdb
+C:\Users\Vu\Desktop\HLDental\Project\Project\obj\Debug\Project.csprojResolveAssemblyReference.cache
+C:\Users\Vu\Desktop\HLDental\Project\Project\obj\Debug\Project.dll
+C:\Users\Vu\Desktop\HLDental\Project\Project\obj\Debug\Project.pdb
