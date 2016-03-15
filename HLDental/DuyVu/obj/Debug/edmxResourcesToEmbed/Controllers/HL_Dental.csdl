@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HL_DentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="IDAppt" />
+    </Key>
+    <Property Name="IDAppt" Type="Int32" Nullable="false" />
+    <Property Name="NoOfTreatment" Type="Int32" />
+    <Property Name="IDPatient" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DayOfTreatment" Type="DateTime" Precision="3" />
+    <Property Name="NextTreatmentDay" Type="DateTime" Precision="3" />
+    <Property Name="NoOfDelay" Type="Int32" />
+    <Property Name="Mobile" Type="Decimal" Precision="11" Scale="0" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_Appointment_Patient" FromRole="Appointment" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="ApppointmentOfClinic">
+    <Key>
+      <PropertyRef Name="No_" />
+    </Key>
+    <Property Name="No_" Type="Int32" Nullable="false" />
+    <Property Name="IDPatient" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IDClinic" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IDAppt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="From" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="To" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NoOfAppt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NoOfDelayAppt" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MobileOfDelayUser" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clinic">
+    <Key>
+      <PropertyRef Name="IDClinic" />
+    </Key>
+    <Property Name="IDClinic" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Information" Type="String" MaxLength="4000" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IDManager" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="GroupUsers" Relationship="Self.FK_GroupUser_Clinic" FromRole="Clinic" ToRole="GroupUser" />
+    <NavigationProperty Name="Patients" Relationship="Self.FK_Patient_Clinic" FromRole="Clinic" ToRole="Patient" />
+    <NavigationProperty Name="Staffs" Relationship="Self.FK_Staff_Clinic" FromRole="Clinic" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="GroupUser">
+    <Key>
+      <PropertyRef Name="IDGroup" />
+    </Key>
+    <Property Name="IDGroup" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDClinic" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Clinic" Relationship="Self.FK_GroupUser_Clinic" FromRole="GroupUser" ToRole="Clinic" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="IDNot" />
+    </Key>
+    <Property Name="IDNot" Type="Int32" Nullable="false" />
+    <Property Name="IDStaff" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IDGroup" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IDPatient" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_Notification_Patient" FromRole="Notification" ToRole="Patient" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK_Notification_Staff" FromRole="Notification" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="IDPatient" />
+    </Key>
+    <Property Name="IDPatient" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Mobile" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDGroup" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Sex" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="VerificationCode" Type="Decimal" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="IDClinic" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TotalPayment" Type="Double" />
+    <Property Name="BalanceLeft" Type="Double" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointment_Patient" FromRole="Patient" ToRole="Appointment" />
+    <NavigationProperty Name="Clinic" Relationship="Self.FK_Patient_Clinic" FromRole="Patient" ToRole="Clinic" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK_Notification_Patient" FromRole="Patient" ToRole="Notification" />
+    <NavigationProperty Name="PaymentOfPatients" Relationship="Self.FK_PaymentOfPatient_Patient" FromRole="Patient" ToRole="PaymentOfPatient" />
+  </EntityType>
+  <EntityType Name="PaymentOfPatient">
+    <Key>
+      <PropertyRef Name="No_" />
+    </Key>
+    <Property Name="No_" Type="Int32" Nullable="false" />
+    <Property Name="IDPatient" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CurrentPayment" Type="Double" Nullable="false" />
+    <Property Name="TimeLeft" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDStaff" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_PaymentOfPatient_Patient" FromRole="PaymentOfPatient" ToRole="Patient" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK_PaymentOfPatient_Staff" FromRole="PaymentOfPatient" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="IDStaff" />
+    </Key>
+    <Property Name="IDStaff" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IDClinic" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Mobile" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Clinic" Relationship="Self.FK_Staff_Clinic" FromRole="Staff" ToRole="Clinic" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK_Notification_Staff" FromRole="Staff" ToRole="Notification" />
+    <NavigationProperty Name="PaymentOfPatients" Relationship="Self.FK_PaymentOfPatient_Staff" FromRole="Staff" ToRole="PaymentOfPatient" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Appointment_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+    <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="IDPatient" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="IDPatient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GroupUser_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="IDClinic" />
+      </Principal>
+      <Dependent Role="GroupUser">
+        <PropertyRef Name="IDClinic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="IDClinic" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="IDClinic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Clinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="IDClinic" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="IDClinic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notification_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="IDPatient" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="IDPatient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notification_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="IDStaff" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="IDStaff" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PaymentOfPatient_Patient">
+    <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+    <End Role="PaymentOfPatient" Type="Self.PaymentOfPatient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="IDPatient" />
+      </Principal>
+      <Dependent Role="PaymentOfPatient">
+        <PropertyRef Name="IDPatient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PaymentOfPatient_Staff">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+    <End Role="PaymentOfPatient" Type="Self.PaymentOfPatient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="IDStaff" />
+      </Principal>
+      <Dependent Role="PaymentOfPatient">
+        <PropertyRef Name="IDStaff" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HL_DentalEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+    <EntitySet Name="ApppointmentOfClinics" EntityType="Self.ApppointmentOfClinic" />
+    <EntitySet Name="Clinics" EntityType="Self.Clinic" />
+    <EntitySet Name="GroupUsers" EntityType="Self.GroupUser" />
+    <EntitySet Name="Notifications" EntityType="Self.Notification" />
+    <EntitySet Name="Patients" EntityType="Self.Patient" />
+    <EntitySet Name="PaymentOfPatients" EntityType="Self.PaymentOfPatient" />
+    <EntitySet Name="Staffs" EntityType="Self.Staff" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Appointment_Patient" Association="Self.FK_Appointment_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GroupUser_Clinic" Association="Self.FK_GroupUser_Clinic">
+      <End Role="Clinic" EntitySet="Clinics" />
+      <End Role="GroupUser" EntitySet="GroupUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Clinic" Association="Self.FK_Patient_Clinic">
+      <End Role="Clinic" EntitySet="Clinics" />
+      <End Role="Patient" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Clinic" Association="Self.FK_Staff_Clinic">
+      <End Role="Clinic" EntitySet="Clinics" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notification_Patient" Association="Self.FK_Notification_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notification_Staff" Association="Self.FK_Notification_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PaymentOfPatient_Patient" Association="Self.FK_PaymentOfPatient_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="PaymentOfPatient" EntitySet="PaymentOfPatients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PaymentOfPatient_Staff" Association="Self.FK_PaymentOfPatient_Staff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="PaymentOfPatient" EntitySet="PaymentOfPatients" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
