@@ -1,0 +1,23 @@
+﻿@using DuyVu.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    <h3>@ViewBag.Thongbao</h3>
+    <span>Username: </span>
+    <br/>
+    <input name="txtUser" />
+    <br/>
+    <span>Password: </span>
+    <br/>
+    <input name="txtPwd" type="password"/>
+    <br/>
+    <input type="submit" id="btmSubmit" name="btmSubmit"/>
+}
+

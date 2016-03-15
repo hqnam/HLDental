@@ -1,0 +1,59 @@
+﻿@model DuyVu.Models.Staff
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/User/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Staff</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDStaff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDStaff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IDClinic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDClinic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

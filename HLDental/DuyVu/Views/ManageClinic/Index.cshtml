@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DuyVu.Models.Staff>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/User/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            ID Clinic
+        </th>
+        <th>
+            Mobile Phone
+        </th>
+        <th>
+           Password
+        </th>
+        <th>
+            Username
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDStaff)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDClinic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { @ID = item.IDStaff }) |
+            @Html.ActionLink("Details", "Details", new { @ID = item.IDStaff }) |
+            @Html.ActionLink("Delete", "Delete", new { @ID = item.IDStaff })
+        </td>
+    </tr>
+}
+
+</table>

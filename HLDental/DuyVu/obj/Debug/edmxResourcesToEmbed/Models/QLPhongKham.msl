@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLPhongKhamModelStoreContainer" CdmEntityContainer="QLPhongKhamEntities">
+    <EntitySetMapping Name="AppointmentOfUsers">
+      <EntityTypeMapping TypeName="QLPhongKhamModel.AppointmentOfUser">
+        <MappingFragment StoreEntitySet="AppointmentOfUser">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="Appt" ColumnName="Appt" />
+          <ScalarProperty Name="NextAppt" ColumnName="NextAppt" />
+          <ScalarProperty Name="NoDelay" ColumnName="NoDelay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clinics">
+      <EntityTypeMapping TypeName="QLPhongKhamModel.Clinic">
+        <MappingFragment StoreEntitySet="Clinic">
+          <ScalarProperty Name="IDClinic" ColumnName="IDClinic" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Information" ColumnName="Information" />
+          <ScalarProperty Name="IDManager" ColumnName="IDManager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupUsers">
+      <EntityTypeMapping TypeName="QLPhongKhamModel.GroupUser">
+        <MappingFragment StoreEntitySet="GroupUser">
+          <ScalarProperty Name="IDGroup" ColumnName="IDGroup" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="IDClinic" ColumnName="IDClinic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentOfUsers">
+      <EntityTypeMapping TypeName="QLPhongKhamModel.PaymentOfUser">
+        <MappingFragment StoreEntitySet="PaymentOfUser">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="NameUser" ColumnName="NameUser" />
+          <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+          <ScalarProperty Name="CurrentPayment" ColumnName="CurrentPayment" />
+          <ScalarProperty Name="NextPaymentDate" ColumnName="NextPaymentDate" />
+          <ScalarProperty Name="NextPayment" ColumnName="NextPayment" />
+          <ScalarProperty Name="TimeLeft" ColumnName="TimeLeft" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QLPhongKhamModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="QLPhongKhamModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="IDGroup" ColumnName="IDGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppointmentOfClinics">
+      <EntityTypeMapping TypeName="QLPhongKhamModel.AppointmentOfClinic">
+        <MappingFragment StoreEntitySet="AppointmentOfClinic">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDClinic" ColumnName="IDClinic" />
+          <ScalarProperty Name="IDAppt" ColumnName="IDAppt" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="NoAppt" ColumnName="NoAppt" />
+          <ScalarProperty Name="NoDelayAppt" ColumnName="NoDelayAppt" />
+          <ScalarProperty Name="IDDelayUser" ColumnName="IDDelayUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentOfClinics">
+      <EntityTypeMapping TypeName="QLPhongKhamModel.PaymentOfClinic">
+        <MappingFragment StoreEntitySet="PaymentOfClinic">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDClinic" ColumnName="IDClinic" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="Total_In" ColumnName="Total_In" />
+          <ScalarProperty Name="NoComplete" ColumnName="NoComplete" />
+          <ScalarProperty Name="NoNotComplete" ColumnName="NoNotComplete" />
+          <ScalarProperty Name="NoDelay" ColumnName="NoDelay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
